@@ -6,11 +6,11 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:05:14 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/28 15:24:43 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2024/12/30 12:08:19 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 t_map	*parse(t_fdf *fdf, char *id_map)
 {

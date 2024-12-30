@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_command.c                                 :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cabo-ram <cabo-ram@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 17:46:50 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 12:08:03 by cabo-ram         ###   ########.fr       */
+/*   Created: 2024/10/09 10:43:54 by cabo-ram          #+#    #+#             */
+/*   Updated: 2024/10/09 10:59:21 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "libft.h"
 
-void	keyboard_command(void *param)
+void	ft_bzero(void *s, size_t n)
 {
-	t_fdf	*fdf;
+	size_t			i;
+	unsigned char	*r;
 
-	fdf = (t_fdf *)param;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(fdf->mlx);
+	i = 0;
+	r = (unsigned char *)s;
+	while (i < n)
+	{
+		r[i] = 0;
+		i++;
+	}
 }

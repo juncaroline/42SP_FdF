@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_command.c                                 :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 17:46:50 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 12:08:03 by cabo-ram         ###   ########.fr       */
+/*   Created: 2024/10/21 12:57:03 by cabo-ram          #+#    #+#             */
+/*   Updated: 2024/10/23 15:22:02 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "libft.h"
 
-void	keyboard_command(void *param)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_fdf	*fdf;
-
-	fdf = (t_fdf *)param;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(fdf->mlx);
+	new -> next = *lst;
+	*lst = new;
 }

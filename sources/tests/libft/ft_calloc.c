@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_command.c                                 :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 17:46:50 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 12:08:03 by cabo-ram         ###   ########.fr       */
+/*   Created: 2024/10/14 09:23:39 by cabo-ram          #+#    #+#             */
+/*   Updated: 2024/10/25 13:44:31 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "libft.h"
 
-void	keyboard_command(void *param)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_fdf	*fdf;
+	void	*ptr;
 
-	fdf = (t_fdf *)param;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(fdf->mlx);
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	if (nmemb > 4294967296 / size)
+		return (NULL);
+	ptr = malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:42:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/28 11:31:50 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2024/12/30 12:58:40 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,23 @@ typedef struct	s_fdf
 	mlx_image_t	*img;
 }	t_fdf;
 
+void	free_split(char **split);
+int	check_lines(int fd, int size);
+void	process_line(t_map *map, char **div_line, int i);
+void	convert_map(t_map *map, char *id_map);
+void	center_map(t_map *map);
+t_coordinates	**alloc_matrix(int width, int height);
+uint32_t	put_alpha(uint32_t color);
+int	ft_hex_to_int(char *hexa);
+void	keyboard_command(void *param);
+t_fdf	*init_fdf(char *id_map);
+void 	free_fdf(t_fdf *fdf);
+void	put_pixel(t_fdf *fdf, int x, int y, uint32_t color);
+void	draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
+void	error_msg(int status);
+void	read_file(char *map);
+t_map	*parse(t_fdf *fdf, char *id_map);
+t_camera	*cam_config(t_fdf *fdf);
+float	get_scale(t_fdf *fdf);
 
 #endif

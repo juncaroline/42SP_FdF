@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_command.c                                 :+:      :+:    :+:   */
+/*   _ft_putstr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cabo-ram <cabo-ram@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 17:46:50 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 12:08:03 by cabo-ram         ###   ########.fr       */
+/*   Created: 2024/10/15 14:00:55 by cabo-ram          #+#    #+#             */
+/*   Updated: 2024/10/15 14:07:49 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "libft.h"
 
-void	keyboard_command(void *param)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_fdf	*fdf;
+	int	i;
 
-	fdf = (t_fdf *)param;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(fdf->mlx);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
 }

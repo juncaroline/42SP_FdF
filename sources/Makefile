@@ -6,17 +6,17 @@
 #    By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/26 12:56:24 by cabo-ram          #+#    #+#              #
-#    Updated: 2024/12/26 13:01:04 by cabo-ram         ###   ########.fr        #
+#    Updated: 2024/12/30 12:30:45 by cabo-ram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= Game
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
-LIBMLX	:= ../MLX42
+LIBMLX	:= ../libraries/MLX42
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS	:= main.c
+SRCS	:= main_test_init_fdf.c input.c /
 OBJS	:= ${SRCS:.c=.o}
 
 all: libmlx $(NAME)

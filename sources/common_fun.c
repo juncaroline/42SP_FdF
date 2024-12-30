@@ -6,27 +6,11 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:12:24 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/28 16:40:10 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2024/12/30 12:07:57 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-t_coordinates	**alloc_matrix(int width, int height)
-{
-	t_coordinates	**matrix;
-
-	matrix = malloc(sizeof(t_coordinates *) * height);
-	if (matrix == NULL)
-		error_msg(2);
-	while (height--)
-	{
-		matrix[height] = ft_calloc(width, sizeof(t_coordinates));
-		if (matrix[height] == NULL)
-			error_msg(2);
-	}
-	return (matrix);
-}
+#include "../includes/fdf.h"
 
 void	free_split(char **split)
 {
@@ -116,3 +100,21 @@ void	convert_map(t_map *map, char *id_map)
 	
 }
 
+void	center_map(t_map *map)
+{
+	unsigned int	x;
+	unsigned int	y;
+	
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			map->matrix[y][x].x -= map->width / 2;
+			map->matrix[y][x].y -= map->height / 2;
+			x++;
+		}
+		y++;
+	}
+}

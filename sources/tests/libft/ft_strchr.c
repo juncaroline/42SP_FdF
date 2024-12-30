@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_command.c                                 :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 17:46:50 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 12:08:03 by cabo-ram         ###   ########.fr       */
+/*   Created: 2024/10/10 09:10:03 by cabo-ram          #+#    #+#             */
+/*   Updated: 2024/10/22 14:12:02 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "libft.h"
 
-void	keyboard_command(void *param)
+char	*ft_strchr(const char *s, int c)
 {
-	t_fdf	*fdf;
+	int		i;
+	char	nc;
 
-	fdf = (t_fdf *)param;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(fdf->mlx);
+	i = 0;
+	nc = (char) c;
+	while (s[i] != '\0')
+	{
+		if (s[i] == nc)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (nc == '\0')
+		return ((char *)(s + ft_strlen(s)));
+	return (NULL);
 }
