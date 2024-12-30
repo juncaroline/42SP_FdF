@@ -6,13 +6,13 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:20:47 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/11/08 14:43:55 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2024/12/30 18:42:19 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+/*size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -36,7 +36,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)(s + i));
 	}
 	return (NULL);
-}
+}*/
 
 char	*ft_strdup(const char *s)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common_fun_2.c                                     :+:      :+:    :+:   */
+/*   complement.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:41:21 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 13:00:55 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2024/12/30 17:24:40 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,6 @@ t_coordinates	**alloc_matrix(int width, int height)
 			error_msg(2);
 	}
 	return (matrix);
-}
-
-uint32_t	put_alpha(uint32_t color)
-{
-	uint32_t		new;
-	unsigned char	*ptr;
-
-	new = color << 8;
-	ptr = (unsigned char *)&new;
-	*ptr = 255;
-	return (new);
 }
 
 int	ft_hex_to_int(char *hexa)
@@ -59,31 +48,30 @@ int	ft_hex_to_int(char *hexa)
 	return (res);
 }
 
-float	get_scale(t_fdf *fdf)
+void	free_split(char **split)
 {
-	float	scale;
-	float	scale_x;
-	float	scale_y;
-	
-	scale_x = WINDOW_WIDTH / (float)fdf->map->width;
-	scale_y = WINDOW_HEIGHT / (float)fdf->map->height;
-	if (scale_x < scale_y)
-		scale = scale_x;
-	else
-		scale = scale_y;
-	return (scale / 2);
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }
 
-t_map	*new_map(void)
+void	free_matrix(t_map *map)
 {
-	t_map	*map;
+	while (map->height--)
+		free(map->matrix[map->height]);
+	free(map->matrix);
+}
 
-	map = malloc(sizeof(t_map));
-	if (map == NULL)
-		error_msg(2);
-	map->width = 0;
-	map->height = 0;
-	map->z_top = 0;
-	map->matrix = NULL;
-	return (map);
+void	free_all(t_fdf *fdf)
+{
+	free_matrix(fdf->map);
+	free(fdf->map);
+	free(fdf->camera);
+	free(fdf);
 }

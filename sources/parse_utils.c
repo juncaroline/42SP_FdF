@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common_fun.c                                       :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 14:12:24 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 12:07:57 by cabo-ram         ###   ########.fr       */
+/*   Created: 2024/12/30 15:26:56 by cabo-ram          #+#    #+#             */
+/*   Updated: 2024/12/30 18:35:13 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-void	free_split(char **split)
-{
-	int	i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-}
 
 int	check_lines(int fd, int size)
 {
@@ -31,7 +18,7 @@ int	check_lines(int fd, int size)
 	int		word_count;
 	char	*line;
 	char	**div_line;
-	
+
 	check = 1;
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -50,31 +37,15 @@ int	check_lines(int fd, int size)
 	return (check);
 }
 
-void	process_line(t_map *map, char **div_line, int i)
+uint32_t	put_alpha(uint32_t color)
 {
-	int		j;
-	char	*color;
+	uint32_t		new;
+	unsigned char	*ptr;
 
-	j = 0;
-	while (j < map->width)
-	{
-		map->matrix[i][j].x = (float)j;
-		map->matrix[i][j].y = (float)i;
-		map->matrix[i][j].z = (float)ft_atoi(div_line[j]);
-		if (map->matrix[i][j].z > map->z_top)
-			map->z_top = map->matrix[i][j].z;
-		color = ft_strchr(div_line[j], ',');
-		if (color != NULL)
-			map->matrix[i][j].color = put_alpha(ft_hex_to_int(color + 1));
-		else
-		{
-			if (map->matrix[i][j].z <= 0)
-				map->matrix[i][j].color = 0x0000FF;
-			else
-				map->matrix[i][j].color = 0xFF0000;
-		}
-		j++;
-	}
+	new = color << 8;
+	ptr = (unsigned char *)&new;
+	*ptr = 255;
+	return (new);
 }
 
 void	convert_map(t_map *map, char *id_map)
@@ -97,19 +68,18 @@ void	convert_map(t_map *map, char *id_map)
 		free(line);
 		i++;
 	}
-	
 }
 
 void	center_map(t_map *map)
 {
 	unsigned int	x;
 	unsigned int	y;
-	
+
 	y = 0;
-	while (y < map->height)
+	while (y < (unsigned int)map->height)
 	{
 		x = 0;
-		while (x < map->width)
+		while (x < (unsigned int)map->width)
 		{
 			map->matrix[y][x].x -= map->width / 2;
 			map->matrix[y][x].y -= map->height / 2;

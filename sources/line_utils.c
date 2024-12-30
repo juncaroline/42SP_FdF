@@ -6,13 +6,13 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:39:48 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 12:08:08 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2024/12/30 17:28:17 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-static void	draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end)
+void	draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end)
 {
 	if (end.y > start.y)
 	{
@@ -32,7 +32,7 @@ static void	draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end)
 	}
 }
 
-static void	draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end)
+void	draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end)
 {
 	if (end.x > start.x)
 	{
@@ -52,7 +52,7 @@ static void	draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end)
 	}
 }
 
-static void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
+void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	t_coordinates end)
 {
 	line.calibrate = line.dif_x / 2;
@@ -70,7 +70,7 @@ static void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	}
 }
 
-static void	draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
+void	draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	t_coordinates end)
 {
 	line.calibrate = line.dif_y / 2;

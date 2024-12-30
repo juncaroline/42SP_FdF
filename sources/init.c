@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 10:59:27 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 12:48:32 by cabo-ram         ###   ########.fr       */
+/*   Created: 2024/12/30 15:42:00 by cabo-ram          #+#    #+#             */
+/*   Updated: 2024/12/30 17:32:22 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,19 @@ t_camera	*cam_config(t_fdf *fdf)
 	else if (fdf->map->z_top > 720)
 		camera->z = 0.05;
 	return (camera);
+}
+
+float	get_scale(t_fdf *fdf)
+{
+	float	scale;
+	float	scale_x;
+	float	scale_y;
+
+	scale_x = WINDOW_WIDTH / (float)fdf->map->width;
+	scale_y = WINDOW_HEIGHT / (float)fdf->map->height;
+	if (scale_x < scale_y)
+		scale = scale_x;
+	else
+		scale = scale_y;
+	return (scale / 2);
 }
