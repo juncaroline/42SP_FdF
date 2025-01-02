@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:16:27 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/10/23 15:27:18 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:23:21 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,60 @@
 
 static size_t	ft_scount(char const *s, char c)
 {
-	size_t	i;
 	size_t	count;
 
-	i = 0;
 	count = 0;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c && s[i] != '\0')
+		if (*s != c)
+		{
 			count++;
-		while (s[i] != c && s[i] != '\0')
-			i++;
+			while (*s != c && *s)
+				s++;
+		}
+		if (*s == '\0')
+			return (count);
+		s++;
 	}
 	return (count);
 }
 
-static char	*ft_memsst(char const *s, size_t i, size_t j)
+static char	**ft_alloc(char **array, const char *s, int c)
 {
-	char	*sst;
-	size_t	n;
+	int	sstr;
+	int	i;
 
-	sst = (char *)malloc(sizeof(char) * (i - j + 1));
-	if (sst == NULL)
-		return (NULL);
-	n = 0;
-	while (j < i)
+	i = 0;
+	while (*s)
 	{
-		sst[n] = s[j];
-		n++;
-		j++;
+		sstr = 0;
+		while (s[sstr] != c && s[sstr])
+			sstr++;
+		array[i] = (char *)ft_calloc((sstr + 1), sizeof(char));
+		ft_strlcpy(array[i], s, sstr + 1);
+		i++;
+		while (*s != c && *s)
+			s++;
+		while (*s == c)
+			s++;
 	}
-	sst[n] = '\0';
-	return (sst);
+	array[i] = NULL;
+	return (array);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**memalloc;
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	char	**array;
+	int		count;
 
-	i = 0;
-	k = 0;
-	memalloc = (char **)malloc(sizeof(char *) * (ft_scount(s, c) + 1));
-	if (memalloc == NULL)
+	if (!s)
 		return (NULL);
-	while (s[i] != '\0')
-	{
-		while (s[i] == c)
-			i++;
-		j = i;
-		while (s[i] != c && s[i] != '\0')
-			i++;
-		if (i > j)
-		{
-			memalloc[k] = ft_memsst(s, i, j);
-			k++;
-		}
-	}
-	memalloc[k] = NULL;
-	return (memalloc);
+	count = ft_scount(s, c);
+	array = (char **)ft_calloc((count + 1), sizeof(char *));
+	if (array == NULL)
+		return (NULL);
+	while (*s == (unsigned char)c && *s)
+		s++;
+	ft_alloc(array, s, c);
+	return (array);
 }

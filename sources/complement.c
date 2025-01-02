@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:41:21 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 17:24:40 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:52:55 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,27 @@
 t_coordinates	**alloc_matrix(int width, int height)
 {
 	t_coordinates	**matrix;
+	int				i;
 
 	matrix = malloc(sizeof(t_coordinates *) * height);
 	if (matrix == NULL)
-		error_msg(2);
-	while (height--)
 	{
-		matrix[height] = ft_calloc(width, sizeof(t_coordinates));
-		if (matrix[height] == NULL)
+		error_msg(2);
+		return (NULL);
+	}
+	i = 0;
+	while (i < height)
+	{
+		matrix[i] = ft_calloc(width, sizeof(t_coordinates));
+		if (matrix[i] == NULL)
+		{
+			while (i > 0)
+				free(matrix[--i]);
+			free(matrix);
 			error_msg(2);
+			return (NULL);
+		}
+		i++;
 	}
 	return (matrix);
 }
@@ -43,6 +55,8 @@ int	ft_hex_to_int(char *hexa)
 			byte = byte - 'a' + 10;
 		else if (byte >= 'A' && byte <= 'F')
 			byte = byte - 'A' + 10;
+		else
+			break ;
 		res = (res << 4) | (byte & 0xF);
 	}
 	return (res);
@@ -70,8 +84,12 @@ void	free_matrix(t_map *map)
 
 void	free_all(t_fdf *fdf)
 {
-	free_matrix(fdf->map);
-	free(fdf->map);
-	free(fdf->camera);
+	if (fdf->map)
+	{
+		free_matrix(fdf->map);
+		free(fdf->map);
+	}
+	if (fdf->camera)
+		free(fdf->camera);
 	free(fdf);
 }

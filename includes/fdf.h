@@ -6,14 +6,13 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:42:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 18:26:14 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:36:34 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "../libraries/get_next_line/get_next_line.h"
 # include "../libraries/libft/libft.h"
 # include "../libraries/MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
@@ -38,7 +37,7 @@ typedef struct s_map
 {
 	int				width;
 	int				height;
-	int				z_top;
+	float			z_top;
 	t_coordinates	**matrix;
 }	t_map;
 
@@ -81,10 +80,7 @@ float			get_scale(t_fdf *fdf);
 
 //line.c / line_utils.c
 void			put_pixel(t_fdf *fdf, int x, int y, uint32_t color);
-void			new_line(t_draw_line *line, t_coordinates start,
-					t_coordinates end);
-void			draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
-void			draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end);
+void			new_line(t_draw_line *t_coordinates start, t_coordinates end);
 void			draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end);
 void			draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 					t_coordinates end);
@@ -97,7 +93,7 @@ void			read_file(char *map);
 void			keyboard_command(void *param);
 
 //parse.c / parse_utils.c
-t_map			*parse(t_fdf *fdf, char *id_map);
+t_map			*parse(char *id_map);
 t_map			*new_map(void);
 int				receive_width(char *id_map);
 int				receive_height(char *id_map);

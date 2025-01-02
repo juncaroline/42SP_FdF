@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:42:00 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 17:32:22 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/02 18:35:51 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ t_fdf	*init_fdf(char *id_map)
 	fdf = malloc(sizeof(t_fdf));
 	if (fdf == NULL)
 		error_msg(2);
-	fdf->map = parse(fdf, id_map);
+	fdf->map = parse(id_map);
+	if (fdf->map == NULL)
+	{
+		free(fdf);
+		return (NULL);
+	}
 	fdf->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "FdF", 1);
 	if (fdf->mlx == NULL)
 		error_msg(3);

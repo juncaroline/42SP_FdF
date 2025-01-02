@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:39:48 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 17:28:17 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/02 10:27:13 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	while ((int)start.x != (int)end.x)
 	{
 		start.x += line.move_x;
-		line.calibrate += line.dif_y;
+		line.calibrate -= line.dif_y;
 		if (line.calibrate < 0)
 		{
 			start.y += line.move_y;
@@ -78,7 +78,7 @@ void	draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	while ((int)start.y != (int)end.y)
 	{
 		start.y += line.move_y;
-		line.calibrate += line.dif_x;
+		line.calibrate -= line.dif_x;
 		if (line.calibrate < 0)
 		{
 			start.x += line.move_x;

@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:32:10 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 15:51:23 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:13:05 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ void	read_file(char *map)
 		error_msg(5);
 	content = get_next_line(fd);
 	if (content == NULL)
-	{
-		close(fd);
 		error_msg(6);
-	}
 	free(content);
 	get_next_line(-1);
 	close(fd);
