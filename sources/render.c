@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:48:26 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 17:32:12 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:38:16 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@ void	render(t_fdf *fdf)
 
 	background(fdf);
 	y = 0;
-	while (y < fdf->map->height - 1)
+	while (y + 1 <= fdf->map->height)
 	{
 		x = 0;
-		while (x < fdf->map->width - 1)
+		while (x + 1 <= fdf->map->width)
 		{
-			settings(fdf, fdf->map->matrix[y][x], fdf->map->matrix[y][x + 1]);
-			settings(fdf, fdf->map->matrix[y][x], fdf->map->matrix[y + 1][x]);
+			if (x + 1 < fdf->map->width)
+				settings(fdf, fdf->map->matrix[y][x],
+					fdf->map->matrix[y][x + 1]);
+			if (y + 1 < fdf->map->height)
+				settings(fdf, fdf->map->matrix[y][x],
+					fdf->map->matrix[y + 1][x]);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:42:00 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/02 18:35:51 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:36:01 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ float	get_scale(t_fdf *fdf)
 		scale = scale_x;
 	else
 		scale = scale_y;
-	return (scale / 2);
+	return (scale / 1.55);
 }

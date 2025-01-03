@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:05:14 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/02 17:52:07 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:07:39 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,16 @@ t_map	*parse(char *id_map)
 	t_map	*map;
 
 	map = new_map();
+	if (map == NULL)
+		return (NULL);
+	if (receive_width(id_map) == -1 || receive_height(id_map) == -1)
+		return (free(map), NULL);
 	map->width = receive_width(id_map);
 	map->height = receive_height(id_map);
 	if (map->width < 2 || map->height < 2)
 	{
+		if (map->matrix)
+			free(map->matrix);
 		free(map);
 		return (NULL);
 	}
@@ -41,7 +47,10 @@ t_map	*new_map(void)
 
 	map = malloc(sizeof(t_map));
 	if (map == NULL)
+	{
 		error_msg(2);
+		return (NULL);
+	}
 	map->width = 0;
 	map->height = 0;
 	map->z_top = 0;
@@ -57,15 +66,22 @@ int	receive_width(char *id_map)
 	char	**div_line;
 
 	fd = open(id_map, O_RDONLY);
+	if (fd < 0)
+		return (error_msg(1), -1);
 	count = 0;
 	line = get_next_line(fd);
+	if (line == NULL)
+		return (close(fd), -1);
 	div_line = ft_split(line, ' ');
+	free (line);
+	if (div_line == NULL)
+		return (close(fd), error_msg(2), -1);
 	while (div_line[count] && div_line[count][0] != '\n')
 		count++;
-	free (line);
 	free_split(div_line);
 	if (!check_lines(fd, count))
-		return (0);
+		return (close(fd), 0);
+	close(fd);
 	return (count);
 }
 
@@ -76,20 +92,29 @@ int	receive_height(char *id_map)
 	char	*line;
 
 	fd = open(id_map, O_RDONLY);
+	if (fd < 0)
+	{
+		error_msg(1);
+		return (-1);
+	}
 	height = 0;
 	line = get_next_line(fd);
-	if (fd < 0)
+	if (line == NULL)
+	{
+		close(fd);
 		return (-1);
+	}
 	while (line != NULL)
 	{
 		height++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (height);
 }
 
-void	process_line(t_map *map, char **div_line, int i)
+int	process_line(t_map *map, char **div_line, int i)
 {
 	int		j;
 	char	*color;
@@ -103,7 +128,7 @@ void	process_line(t_map *map, char **div_line, int i)
 		if (map->matrix[i][j].z > map->z_top)
 			map->z_top = map->matrix[i][j].z;
 		color = ft_strchr(div_line[j], ',');
-		if (color != NULL)
+		if (color)
 			map->matrix[i][j].color = put_alpha(ft_hex_to_int(color + 1));
 		else
 		{
@@ -114,4 +139,5 @@ void	process_line(t_map *map, char **div_line, int i)
 		}
 		j++;
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:42:44 by cabo-ram          #+#    #+#             */
-/*   Updated: 2024/12/30 17:07:09 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:38:38 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	isometry(t_fdf *fdf, t_coordinates *start, t_coordinates *end)
 	t_coordinates	new_start;
 	t_coordinates	new_end;
 
-	new_start.x = (start->x - start->y) * cos(0.610865);
-	new_start.y = (start->x + start->y) * sin(0.785398)
+	new_start.x = (start->x - start->y) * cos(0.523599);
+	new_start.y = (start->x + start->y) * sin(0.523599)
 		- (start->z * fdf->camera->z);
-	new_end.x = (end->x - end->y) * cos(0.610865);
-	new_end.y = (end->x + end->y) * sin(0.785398)
+	new_end.x = (end->x - end->y) * cos(0.523599);
+	new_end.y = (end->x + end->y) * sin(0.523599)
 		- (end->z * fdf->camera->z);
 	start->x = new_start.x;
 	start->y = new_start.y;

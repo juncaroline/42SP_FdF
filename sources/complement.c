@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:41:21 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/02 17:52:55 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:08:13 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ int	ft_hex_to_int(char *hexa)
 			byte = byte - 'a' + 10;
 		else if (byte >= 'A' && byte <= 'F')
 			byte = byte - 'A' + 10;
-		else
-			break ;
 		res = (res << 4) | (byte & 0xF);
 	}
 	return (res);

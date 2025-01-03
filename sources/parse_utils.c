@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:26:56 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/02 18:36:27 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:08:49 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	check_lines(int fd, int size)
 		if (line == NULL)
 			break ;
 		div_line = ft_split(line, ' ');
-
 		while (div_line[word_count] != NULL && div_line[word_count][0] != '\n')
 			word_count++;
 		if (word_count != size)
@@ -36,7 +35,6 @@ int	check_lines(int fd, int size)
 		free(line);
 		free_split(div_line);
 	}
-	close(fd);
 	get_next_line(-1);
 	return (check);
 }
@@ -52,26 +50,53 @@ uint32_t	put_alpha(uint32_t color)
 	return (new);
 }
 
+static int	process_map_line(t_map *map, char *line, int line_i)
+{
+	char	**div_line;
+
+	div_line = ft_split(line, ' ');
+	if (div_line == NULL)
+	{
+		error_msg(2);
+		return (0);
+	}
+	if (process_line(map, div_line, line_i) == -1)
+	{
+		free_split(div_line);
+		error_msg(3);
+		return (0);
+	}
+	free_split(div_line);
+	return (1);
+}	
+
 void	convert_map(t_map *map, char *id_map)
 {
 	int		line_i;
 	int		fd;
 	char	*line;
-	char	**div_line;
 
-	line_i = 0;
 	fd = open(id_map, O_RDONLY);
+	if (fd < 0)
+	{
+		error_msg(1);
+		return ;
+	}
+	line_i = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		div_line = ft_split(line, ' ');
-		process_line(map, div_line, line_i);
-		free_split(div_line);
+		if (!process_map_line(map, line, line_i))
+		{
+			free(line);
+			break ;
+		}
 		free(line);
 		line_i++;
 	}
+	close (fd);
 }
 
 void	center_map(t_map *map)

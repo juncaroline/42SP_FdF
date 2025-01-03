@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:42:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/02 18:36:34 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:38:21 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ typedef struct s_map
 
 typedef struct s_draw_line
 {
-	int		dif_x;
-	int		dif_y;
-	int		calibrate;
-	int		move_x;
-	int		move_y;
+	int		d_x;
+	int		d_y;
+	int		control;
+	int		inc_x;
+	int		inc_y;
 }	t_draw_line;
 
 typedef struct s_camera
@@ -80,7 +80,8 @@ float			get_scale(t_fdf *fdf);
 
 //line.c / line_utils.c
 void			put_pixel(t_fdf *fdf, int x, int y, uint32_t color);
-void			new_line(t_draw_line *t_coordinates start, t_coordinates end);
+void			draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
+void			draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end);
 void			draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end);
 void			draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 					t_coordinates end);
@@ -97,7 +98,7 @@ t_map			*parse(char *id_map);
 t_map			*new_map(void);
 int				receive_width(char *id_map);
 int				receive_height(char *id_map);
-void			process_line(t_map *map, char **div_line, int i);
+int				process_line(t_map *map, char **div_line, int i);
 int				check_lines(int fd, int size);
 uint32_t		put_alpha(uint32_t color);
 void			convert_map(t_map *map, char *id_map);

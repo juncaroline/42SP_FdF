@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:39:48 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/02 10:27:13 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/03 11:12:22 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ void	draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end)
 void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	t_coordinates end)
 {
-	line.calibrate = line.dif_x / 2;
+	line.control = line.d_x / 2;
 	put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	while ((int)start.x != (int)end.x)
 	{
-		start.x += line.move_x;
-		line.calibrate -= line.dif_y;
-		if (line.calibrate < 0)
+		start.x += line.inc_x;
+		line.control -= line.d_y;
+		if (line.control < 0)
 		{
-			start.y += line.move_y;
-			line.calibrate += line.dif_x;
+			start.y += line.inc_y;
+			line.control += line.d_x;
 		}
 		put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	}
@@ -73,16 +73,16 @@ void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 void	draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	t_coordinates end)
 {
-	line.calibrate = line.dif_y / 2;
+	line.control = line.d_y / 2;
 	put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	while ((int)start.y != (int)end.y)
 	{
-		start.y += line.move_y;
-		line.calibrate -= line.dif_x;
-		if (line.calibrate < 0)
+		start.y += line.inc_y;
+		line.control -= line.d_x;
+		if (line.control < 0)
 		{
-			start.x += line.move_x;
-			line.calibrate += line.dif_y;
+			start.x += line.inc_x;
+			line.control += line.d_y;
 		}
 		put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	}
