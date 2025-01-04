@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 14:05:14 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/03 14:07:39 by cabo-ram         ###   ########.fr       */
+/*   Created: 2025/01/04 11:59:08 by cabo-ram          #+#    #+#             */
+/*   Updated: 2025/01/04 15:05:35 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf_bonus.h"
 
 t_map	*parse(char *id_map)
 {
@@ -133,9 +133,9 @@ int	process_line(t_map *map, char **div_line, int i)
 		else
 		{
 			if (map->matrix[i][j].z <= 0)
-				map->matrix[i][j].color = 0x0000FF;
+				map->matrix[i][j].color = put_alpha(0x3333FF);
 			else
-				map->matrix[i][j].color = 0xFF0000;
+				map->matrix[i][j].color = put_alpha(0xFF3333);
 		}
 		j++;
 	}

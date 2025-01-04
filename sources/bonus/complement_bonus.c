@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complement.c                                       :+:      :+:    :+:   */
+/*   complement_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 16:41:21 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/03 12:08:13 by cabo-ram         ###   ########.fr       */
+/*   Created: 2025/01/04 11:57:27 by cabo-ram          #+#    #+#             */
+/*   Updated: 2025/01/04 15:05:14 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf_bonus.h"
 
 t_coordinates	**alloc_matrix(int width, int height)
 {

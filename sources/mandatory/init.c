@@ -6,11 +6,11 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:42:00 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/03 14:36:01 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:56:41 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
 t_fdf	*init_fdf(char *id_map)
 {
@@ -66,5 +66,5 @@ float	get_scale(t_fdf *fdf)
 		scale = scale_x;
 	else
 		scale = scale_y;
-	return (scale / 1.55);
+	return (scale / 1.75);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_utils.c                                       :+:      :+:    :+:   */
+/*   line_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 11:39:48 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/03 11:12:22 by cabo-ram         ###   ########.fr       */
+/*   Created: 2025/01/04 11:57:05 by cabo-ram          #+#    #+#             */
+/*   Updated: 2025/01/04 15:05:30 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf_bonus.h"
 
 void	draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end)
 {

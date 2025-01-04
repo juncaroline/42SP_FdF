@@ -6,20 +6,23 @@
 #    By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/26 12:56:24 by cabo-ram          #+#    #+#              #
-#    Updated: 2025/01/02 15:39:12 by cabo-ram         ###   ########.fr        #
+#    Updated: 2025/01/04 15:00:17 by cabo-ram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= fdf
+NAME_BONUS	:= fdf_bonus
 CFLAGS	:= -g -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ../libraries/MLX42
 LIBFT	:= ../libraries/libft
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -ldl -lglfw -pthread -lm
-SRCS	:= complement.c init.c line.c line_utils.c main.c \
-			parse.c parse_utils.c render.c render_utils.c
+SRCS	:= $(addprefix mandatory/,complement.c init.c line.c line_utils.c main.c \
+			parse.c parse_utils.c render.c render_utils.c)
+SRCS_BONUS :=
 OBJS	:= ${SRCS:.c=.o}
+OBJS_BONUS := ${SRCS_BONUS:.c=.o}
 
 all: libmlx libft $(NAME)
 
@@ -35,13 +38,18 @@ libft:
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
+bonus: $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJS_BONUS)
+	@$(CC) $(OBJS_BONUS) $(LIBS) $(HEADERS) -o $(NAME)
+	
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS) $(OBJS_BONUS)
 	@rm -rf $(LIBMLX)/build
 	@make -C $(LIBFT) clean
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(NAME_BONUS)
 	@make -C $(LIBFT) fclean
 
 re: clean all

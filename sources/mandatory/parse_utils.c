@@ -6,11 +6,22 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:26:56 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/03 10:08:49 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:50:30 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
+
+uint32_t	put_alpha(uint32_t color)
+{
+	uint32_t		new;
+	unsigned char	*ptr;
+
+	new = color << 8;
+	ptr = (unsigned char *)&new;
+	*ptr = 255;
+	return (new);
+}
 
 int	check_lines(int fd, int size)
 {
@@ -37,17 +48,6 @@ int	check_lines(int fd, int size)
 	}
 	get_next_line(-1);
 	return (check);
-}
-
-uint32_t	put_alpha(uint32_t color)
-{
-	uint32_t		new;
-	unsigned char	*ptr;
-
-	new = color << 8;
-	ptr = (unsigned char *)&new;
-	*ptr = 255;
-	return (new);
 }
 
 static int	process_map_line(t_map *map, char *line, int line_i)

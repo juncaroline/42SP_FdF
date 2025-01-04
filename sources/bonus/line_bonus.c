@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.c                                             :+:      :+:    :+:   */
+/*   line_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 13:34:20 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/03 12:52:49 by cabo-ram         ###   ########.fr       */
+/*   Created: 2025/01/04 11:09:39 by cabo-ram          #+#    #+#             */
+/*   Updated: 2025/01/04 15:05:28 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
-#include <stdio.h>
+#include "../../includes/fdf_bonus.h"
 
 void	put_pixel(t_fdf *fdf, int x, int y, uint32_t color)
 {
@@ -27,17 +26,21 @@ static int	ft_abs(int n)
 	return (n);
 }
 
-static void	new_line_data(t_draw_line *line, t_coordinates start,
-	t_coordinates end)
+static void	new_line_data(t_draw_line *line, t_coordinates *start,
+	t_coordinates *end)
 {
-	line->d_x = ft_abs(end.x - start.x);
-	line->d_y = ft_abs(end.y - start.y);
+	start->x = roundf(start->x);
+	start->y = roundf(start->y);
+	end->x = roundf(end->x);
+	end->y = roundf(end->y);
+	line->d_x = ft_abs(end->x - start->x);
+	line->d_y = ft_abs(end->y - start->y);
 	line->control = 0;
-	if (end.x > start.x)
+	if (end->x > start->x)
 		line->inc_x = 1;
 	else
 		line->inc_x = -1;
-	if (end.y > start.y)
+	if (end->y > start->y)
 		line->inc_y = 1;
 	else
 		line->inc_y = -1;
@@ -47,7 +50,7 @@ void	draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end)
 {
 	t_draw_line	line;
 
-	new_line_data(&line, start, end);
+	new_line_data(&line, &start, &end);
 	if (line.d_x == 0)
 		draw_vert(fdf, start, end);
 	else if (line.d_y == 0)

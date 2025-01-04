@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 15:48:26 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/03 12:38:16 by cabo-ram         ###   ########.fr       */
+/*   Created: 2025/01/04 11:20:28 by cabo-ram          #+#    #+#             */
+/*   Updated: 2025/01/04 15:05:39 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf_bonus.h"
 
 void	render(t_fdf *fdf)
 {
@@ -50,7 +50,11 @@ void	background(t_fdf *fdf)
 void	settings(t_fdf *fdf, t_coordinates start, t_coordinates end)
 {
 	scale(fdf, &start, &end);
-	isometry(fdf, &start, &end);
+	if (fdf->camera->projection == ISOMETRIC)
+		isometry(fdf, &start, &end);
+	rotate_x(fdf, &start, &end, fdf->camera->x_rotation);
+	rotate_y(&start, &end, fdf->camera->y_rotation);
+	rotate_z(&start, &end, fdf->camera->z_rotation);
 	centralize(fdf, &start, &end);
 	draw_line(fdf, start, end);
 }
