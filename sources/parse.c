@@ -132,6 +132,14 @@ int	process_line(t_map *map, char **div_line, int i)
 			map->matrix[i][j].color = put_alpha(ft_hex_to_int(color + 1));
 		else
 		{
+			// ontem eu estava entrando numa avaliação online e não pude entender exatamente
+			// qual problema você estava tentando resolver. eu compilei aqui e rodei o "42.fdf".
+			// supondo que o problema seja aquilo que eu vi na tela (algumas linhas não
+			// aparecem), acho que o problem está aqui embaixo. está faltando o canal alfa
+			// nas cores que você está especificando (precisa ser 0x0000FFFF e 0x0000FFFF).
+			// como já tem aí em cima um ft_put_alpha, eu imagino que você já entendido que a
+			// MinilibX e a Codam usam formatos diferentes para cor. se você não tinha notado
+			// isso ou se o problema era outro, amanhã sábado eu devo passar na 42 também!
 			if (map->matrix[i][j].z <= 0)
 				map->matrix[i][j].color = 0x0000FF;
 			else
