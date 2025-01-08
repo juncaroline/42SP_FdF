@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 10:33:38 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 10:02:31 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:51:52 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define WINDOW_WIDTH 1600
 # define WINDOW_HEIGHT 900
 # define ISOMETRIC 0
-# define TOP_VIEW 1	
+# define TOP_VIEW 1
 
 typedef struct s_coordinates
 {
@@ -73,6 +73,14 @@ typedef struct s_fdf
 	mlx_image_t	*img;
 }	t_fdf;
 
+//color_bonus.c color_utils_bonus.c
+int				get_red(int color);
+int				get_green(int color);
+int				get_blue(int color);
+int				get_alpha(int color);
+int				get_rgba(int red, int green, int blue, int alpha);
+int				gradient(int start, int end, int grad_len, int position);
+
 //complement_bonus.c
 t_coordinates	**alloc_matrix(int width, int height);
 int				ft_hex_to_int(char *hexa);
@@ -97,6 +105,7 @@ void			projection(t_fdf *fdf);
 
 //line_bonus.c / line_utils_bonus.c
 void			put_pixel(t_fdf *fdf, int x, int y, uint32_t color);
+int				ft_abs(int n);
 void			draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
 void			draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end);
 void			draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end);

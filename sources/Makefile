@@ -6,7 +6,7 @@
 #    By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/26 12:56:24 by cabo-ram          #+#    #+#              #
-#    Updated: 2025/01/08 12:54:11 by cabo-ram         ###   ########.fr        #
+#    Updated: 2025/01/08 15:35:18 by cabo-ram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,11 @@ LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -ldl -lglfw -pthread -lm
 SRCS	:= $(addprefix mandatory/,color.c color_utils.c complement.c init.c \
 			line.c line_utils.c main.c parse.c parse_utils.c render.c \
 			render_utils.c)
-SRCS_BONUS :=$(addprefix bonus/,complement_bonus.c init_bonus.c \
-			keyboard_command_bonus.c keyboard_command_utils_bonus.c \
-			line_bonus.c line_utils_bonus.c main_bonus.c parse_bonus.c \
-			parse_utils_bonus.c render_bonus.c render_utils_bonus.c \
-			rotation_bonus.c) 
+SRCS_BONUS :=$(addprefix bonus/,color_bonus.c color_utils_bonus.c \
+			complement_bonus.c init_bonus.c keyboard_command_bonus.c \
+			keyboard_command_utils_bonus.c line_bonus.c line_utils_bonus.c \
+			main_bonus.c parse_bonus.c parse_utils_bonus.c render_bonus.c \
+			render_utils_bonus.c rotation_bonus.c) 
 OBJS	:= ${SRCS:.c=.o}
 OBJS_BONUS := ${SRCS_BONUS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:09:39 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 15:05:28 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:22:44 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	put_pixel(t_fdf *fdf, int x, int y, uint32_t color)
 	mlx_put_pixel(fdf->img, x, y, color);
 }
 
-static int	ft_abs(int n)
+int	ft_abs(int n)
 {
 	if (n < 0)
 		return (-n);

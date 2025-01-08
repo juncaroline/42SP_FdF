@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:57:05 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 15:05:30 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:23:47 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ void	draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end)
 void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	t_coordinates end)
 {
+	int		position;
+	int		grad_len;
+	bool	is_grad;
+
+	position = 0;
+	grad_len = ft_abs(end.x - start.x);
+	is_grad = (start.color != end.color);
 	line.control = line.d_x / 2;
 	put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	while ((int)start.x != (int)end.x)
@@ -66,13 +73,25 @@ void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 			start.y += line.inc_y;
 			line.control += line.d_x;
 		}
-		put_pixel(fdf, (int)start.x, (int)start.y, start.color);
+		position++;
+		if (is_grad)
+			put_pixel(fdf, (int)start.x, (int)start.y, gradient(0xFF3333,
+					0x3333FF, grad_len, position));
+		else
+			put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	}
 }
 
 void	draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	t_coordinates end)
 {
+	int		position;
+	int		grad_len;
+	bool	is_grad;
+
+	position = 0;
+	grad_len = ft_abs(end.y - start.y);
+	is_grad = (start.color != end.color);
 	line.control = line.d_y / 2;
 	put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	while ((int)start.y != (int)end.y)
@@ -84,6 +103,11 @@ void	draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
 			start.x += line.inc_x;
 			line.control += line.d_y;
 		}
-		put_pixel(fdf, (int)start.x, (int)start.y, start.color);
+		position++;
+		if (is_grad)
+			put_pixel(fdf, (int)start.x, (int)start.y, gradient(0xFF3333,
+					0x3333FF, grad_len, position));
+		else
+			put_pixel(fdf, (int)start.x, (int)start.y, start.color);
 	}
 }

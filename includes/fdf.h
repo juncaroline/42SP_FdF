@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:42:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 12:50:40 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:51:48 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,11 @@ typedef struct s_fdf
 	mlx_image_t	*img;
 }	t_fdf;
 
-
 //color.c color_utils.c
 int				get_red(int color);
 int				get_green(int color);
 int				get_blue(int color);
-int 			get_alpha(int color);
+int				get_alpha(int color);
 int				get_rgba(int red, int green, int blue, int alpha);
 int				gradient(int start, int end, int grad_len, int position);
 

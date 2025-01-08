@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:44:36 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 15:05:26 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:15:16 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	rotation(t_fdf *fdf)
 {
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_A))
-		fdf->camera->y_rotation += (15 * 0.0175);
+		fdf->camera->y_rotation += 0.0175;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_D))
-		fdf->camera->y_rotation -= (15 * 0.0175);
+		fdf->camera->y_rotation -= 0.0175;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_W))
-		fdf->camera->x_rotation += (15 * 0.0175);
+		fdf->camera->x_rotation += 0.0175;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_S))
-		fdf->camera->x_rotation -= (15 * 0.0175);
+		fdf->camera->x_rotation -= 0.0175;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_Q))
-		fdf->camera->z_rotation += (15 * 0.0175);
+		fdf->camera->z_rotation += 0.0175;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_E))
-		fdf->camera->z_rotation -= (15 * 0.0175);
+		fdf->camera->z_rotation -= 0.0175;
 }
 
 void	zoom(t_fdf *fdf)
