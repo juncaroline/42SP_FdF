@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:42:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 14:51:48 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:50:40 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,15 @@ typedef struct s_fdf
 	mlx_image_t	*img;
 }	t_fdf;
 
+
+//color.c color_utils.c
+int				get_red(int color);
+int				get_green(int color);
+int				get_blue(int color);
+int 			get_alpha(int color);
+int				get_rgba(int red, int green, int blue, int alpha);
+int				gradient(int start, int end, int grad_len, int position);
+
 //complement.c
 t_coordinates	**alloc_matrix(int width, int height);
 int				ft_hex_to_int(char *hexa);
@@ -80,6 +89,7 @@ float			get_scale(t_fdf *fdf);
 
 //line.c / line_utils.c
 void			put_pixel(t_fdf *fdf, int x, int y, uint32_t color);
+int				ft_abs(int n);
 void			draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
 void			draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end);
 void			draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end);
