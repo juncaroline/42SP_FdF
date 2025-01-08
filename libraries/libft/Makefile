@@ -6,7 +6,7 @@
 #    By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:31:40 by cabo-ram          #+#    #+#              #
-#    Updated: 2025/01/02 12:28:10 by cabo-ram         ###   ########.fr        #
+#    Updated: 2025/01/08 09:48:27 by cabo-ram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,21 +34,19 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS)
-#	ar rcs $(NAME) $(OBJS)
 
 bonus: $(OBJS) $(OBJSBONUS)
-#	ar rcs $(NAME) $(OBJS) $(OBJSBONUS)
 	@make OBJS="$(OBJS) $(OBJSBONUS)" --no-print-directory 
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-	ar rcs $(NAME) $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@ar rcs $(NAME) $@
 
 clean:
-	$(RM) $(OBJS) $(OBJSBONUS)
+	@$(RM) $(OBJS) $(OBJSBONUS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

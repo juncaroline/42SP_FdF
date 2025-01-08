@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:01:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 15:05:20 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 09:35:23 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ t_fdf	*init_fdf(char *id_map)
 	fdf->camera = cam_config(fdf);
 	mlx_image_to_window(fdf->mlx, fdf->img, 0, 0);
 	return (fdf);
-}
-
-t_camera	*cam_config(t_fdf *fdf)
-{
-	t_camera	*camera;
-
-	camera = malloc(sizeof(t_camera));
-	if (camera == NULL)
-		error_msg(4);
-	fdf->camera = camera;
-	set_camera(fdf, ISOMETRIC);
-	return (camera);
 }
 
 void	set_camera(t_fdf *fdf, int projection_type)
@@ -82,4 +70,16 @@ float	get_scale(t_fdf *fdf)
 	else
 		scale = scale_y;
 	return (scale / 1.75);
+}
+
+t_camera	*cam_config(t_fdf *fdf)
+{
+	t_camera	*camera;
+
+	camera = malloc(sizeof(t_camera));
+	if (camera == NULL)
+		error_msg(4);
+	fdf->camera = camera;
+	set_camera(fdf, ISOMETRIC);
+	return (camera);
 }

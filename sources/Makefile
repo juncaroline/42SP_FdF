@@ -6,7 +6,7 @@
 #    By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/26 12:56:24 by cabo-ram          #+#    #+#              #
-#    Updated: 2025/01/04 15:00:17 by cabo-ram         ###   ########.fr        #
+#    Updated: 2025/01/08 10:20:02 by cabo-ram         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a -ldl -lglfw -pthread -lm
 SRCS	:= $(addprefix mandatory/,complement.c init.c line.c line_utils.c main.c \
 			parse.c parse_utils.c render.c render_utils.c)
-SRCS_BONUS :=
+SRCS_BONUS :=$(addprefix bonus/,complement_bonus.c init_bonus.c keyboard_command_bonus.c \
+			keyboard_command_utils_bonus.c line_bonus.c line_utils_bonus.c main_bonus.c \
+			parse_bonus.c parse_utils_bonus.c render_bonus.c render_utils_bonus.c rotation_bonus.c) 
 OBJS	:= ${SRCS:.c=.o}
 OBJS_BONUS := ${SRCS_BONUS:.c=.o}
 
@@ -38,10 +40,10 @@ libft:
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
-bonus: $(NAME_BONUS)
+bonus: libmlx libft $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJS_BONUS)
-	@$(CC) $(OBJS_BONUS) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(OBJS_BONUS) $(LIBS) $(HEADERS) -o $(NAME_BONUS)
 	
 clean:
 	@rm -rf $(OBJS) $(OBJS_BONUS)

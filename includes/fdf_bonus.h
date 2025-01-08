@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 10:33:38 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 15:06:28 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:02:31 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,18 @@ void			free_all(t_fdf *fdf);
 
 //init_bonus.c
 t_fdf			*init_fdf(char *id_map);
-t_camera		*cam_config(t_fdf *fdf);
+void			set_camera(t_fdf *fdf, int projection_type);
 float			get_scale(t_fdf *fdf);
+t_camera		*cam_config(t_fdf *fdf);
+
+//keyboard_command_bonus.c \ keyboard_command_utils_bonus.c
+void			keyboard_command(void *param);
+void			reset_view(t_fdf *fdf);
+void			movement(t_fdf *fdf);
+void			z_scale(t_fdf *fdf);
+void			rotation(t_fdf *fdf);
+void			zoom(t_fdf *fdf);
+void			projection(t_fdf *fdf);
 
 //line_bonus.c / line_utils_bonus.c
 void			put_pixel(t_fdf *fdf, int x, int y, uint32_t color);
@@ -112,12 +122,18 @@ void			convert_map(t_map *map, char *id_map);
 void			center_map(t_map *map);
 
 //render_bonus.c / render_utils_bonus.c
-void			render(t_fdf *fdf);
+void			render(void *param);
 void			background(t_fdf *fdf);
 void			settings(t_fdf *fdf, t_coordinates start, t_coordinates end);
 void			scale(t_fdf *fdf, t_coordinates *start, t_coordinates *end);
 void			isometry(t_fdf *fdf, t_coordinates *start, t_coordinates *end);
 void			centralize(t_fdf *fdf, t_coordinates *start,
 					t_coordinates *end);
+
+//rotation_bonus.c
+void			rotate_x(t_fdf *fdf, t_coordinates *start, t_coordinates *end,
+					float angle);
+void			rotate_y(t_coordinates *start, t_coordinates *end, float angle);
+void			rotate_z(t_coordinates *start, t_coordinates *end, float angle);
 
 #endif

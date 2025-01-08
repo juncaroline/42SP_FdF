@@ -6,17 +6,19 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:20:28 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 15:05:39 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:04:44 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf_bonus.h"
 
-void	render(t_fdf *fdf)
+void	render(void *param)
 {
-	int	x;
-	int	y;
+	t_fdf	*fdf;
+	int		x;
+	int		y;
 
+	fdf = (t_fdf *)param;
 	background(fdf);
 	y = 0;
 	while (y + 1 <= fdf->map->height)
