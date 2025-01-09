@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 10:33:38 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/09 10:48:41 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:10:26 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define WINDOW_HEIGHT 900
 # define ISOMETRIC 0
 # define TOP_VIEW 1
-# define CONIC 2
 
 typedef struct s_coordinates
 {
