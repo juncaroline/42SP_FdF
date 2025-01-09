@@ -6,13 +6,13 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:57:05 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 15:23:47 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:48:44 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf_bonus.h"
 
-void	draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end)
+void	axis_y_line(t_fdf *fdf, t_coordinates start, t_coordinates end)
 {
 	if (end.y > start.y)
 	{
@@ -32,7 +32,7 @@ void	draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end)
 	}
 }
 
-void	draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end)
+void	axis_x_line(t_fdf *fdf, t_coordinates start, t_coordinates end)
 {
 	if (end.x > start.x)
 	{
@@ -52,7 +52,7 @@ void	draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end)
 	}
 }
 
-void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
+void	diag_x_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	t_coordinates end)
 {
 	int		position;
@@ -82,7 +82,7 @@ void	draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	}
 }
 
-void	draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
+void	diag_y_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 	t_coordinates end)
 {
 	int		position;

@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:42:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 16:51:48 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:48:38 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ float			get_scale(t_fdf *fdf);
 void			put_pixel(t_fdf *fdf, int x, int y, uint32_t color);
 int				ft_abs(int n);
 void			draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
-void			draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end);
-void			draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end);
-void			draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
+void			axis_y_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
+void			axis_x_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
+void			diag_x_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 					t_coordinates end);
-void			draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
+void			diag_y_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 					t_coordinates end);
 
 //main.c

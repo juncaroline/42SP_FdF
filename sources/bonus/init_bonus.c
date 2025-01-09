@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:01:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 16:56:11 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:07:10 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void	set_camera(t_fdf *fdf, int projection_type)
 	fdf->camera->x_rotation = 0;
 	fdf->camera->y_rotation = 0;
 	fdf->camera->z_rotation = 0;
+	if (projection_type == CONIC)
+	{
+		fdf->camera->z_scale_resize = 0.005;
+		fdf->camera->z_default = 1;
+	}
 	if (fdf->map->width <= 500)
 		fdf->camera->z_scale_resize = 0.5;
 	else

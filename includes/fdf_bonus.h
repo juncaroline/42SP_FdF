@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 10:33:38 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 16:51:52 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:48:41 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@
 # define WINDOW_HEIGHT 900
 # define ISOMETRIC 0
 # define TOP_VIEW 1
+# define CONIC 2
 
 typedef struct s_coordinates
 {
 	float		x;
 	float		y;
 	float		z;
+	int			point;
 	uint32_t	color;
 }	t_coordinates;
 
@@ -107,11 +109,11 @@ void			projection(t_fdf *fdf);
 void			put_pixel(t_fdf *fdf, int x, int y, uint32_t color);
 int				ft_abs(int n);
 void			draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
-void			draw_vert(t_fdf *fdf, t_coordinates start, t_coordinates end);
-void			draw_horiz(t_fdf *fdf, t_coordinates start, t_coordinates end);
-void			draw_diag_x(t_fdf *fdf, t_draw_line line, t_coordinates start,
+void			axis_y_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
+void			axis_x_line(t_fdf *fdf, t_coordinates start, t_coordinates end);
+void			diag_x_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 					t_coordinates end);
-void			draw_diag_y(t_fdf *fdf, t_draw_line line, t_coordinates start,
+void			diag_y_line(t_fdf *fdf, t_draw_line line, t_coordinates start,
 					t_coordinates end);
 
 //main_bonus.c

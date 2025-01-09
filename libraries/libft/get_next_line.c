@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:19:42 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/02 16:05:13 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:40:25 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*get_new(char *content)
 	char	*line;
 	size_t	line_size;
 	char	*new_pos;
-	
+
 	if (content[0] == '\0')
 		return (NULL);
 	new_pos = ft_strchr(content, '\n');

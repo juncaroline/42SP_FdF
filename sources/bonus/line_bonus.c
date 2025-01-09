@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:09:39 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 15:22:44 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:48:50 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	draw_line(t_fdf *fdf, t_coordinates start, t_coordinates end)
 
 	new_line_data(&line, &start, &end);
 	if (line.d_x == 0)
-		draw_vert(fdf, start, end);
+		axis_y_line(fdf, start, end);
 	else if (line.d_y == 0)
-		draw_horiz(fdf, start, end);
+		axis_x_line(fdf, start, end);
 	else
 	{
 		if (line.d_x >= line.d_y)
-			draw_diag_x(fdf, line, start, end);
+			diag_x_line(fdf, line, start, end);
 		else
-			draw_diag_y(fdf, line, start, end);
+			diag_y_line(fdf, line, start, end);
 	}
 }

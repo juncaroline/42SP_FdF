@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:44:36 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/08 16:15:16 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:36:34 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	zoom(t_fdf *fdf)
 
 void	projection(t_fdf *fdf)
 {
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_1))
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_P))
 		set_camera(fdf, ISOMETRIC);
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_2))
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_T))
 		set_camera(fdf, TOP_VIEW);
 }

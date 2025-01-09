@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 12:21:01 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/04 15:05:23 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:38:29 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	movement(t_fdf *fdf)
 
 void	z_scale(t_fdf *fdf)
 {
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_K))
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_U))
 		fdf->camera->z_default += fdf->camera->z_scale_resize;
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_J))
+	if (mlx_is_key_down(fdf->mlx, MLX_KEY_F))
 		fdf->camera->z_default -= fdf->camera->z_scale_resize;
 }
