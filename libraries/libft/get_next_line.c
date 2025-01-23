@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:19:42 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/09 11:40:25 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:07:46 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	*read_file(int fd, char *buffer)
 	if (file == NULL)
 		return (NULL);
 	bytes = 1;
-	while (!ft_strchr(buffer, '\n') && bytes)
+	while (!ft_strchr(buffer, '\n') && bytes > 0)
 	{
 		bytes = read(fd, file, BUFFER_SIZE);
 		if (bytes < 0)
@@ -97,7 +97,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*pile;
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		free(pile);
 		pile = NULL;

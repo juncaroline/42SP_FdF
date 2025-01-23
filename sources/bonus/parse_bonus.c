@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:59:08 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/06 15:31:20 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:18:16 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,16 @@ int	receive_width(char *id_map)
 	int		fd;
 	int		count;
 	char	*line;
-	char	**div_line;
 
 	fd = open(id_map, O_RDONLY);
 	if (fd < 0)
 		return (error_msg(1), -1);
 	count = 0;
-	line = get_next_line(fd);
-	if (line == NULL)
-		return (close(fd), -1);
-	div_line = ft_split(line, ' ');
-	free (line);
-	if (div_line == NULL)
-		return (close(fd), error_msg(2), -1);
-	while (div_line[count] && div_line[count][0] != '\n')
+	while ((line = get_next_line(fd)) != NULL)
+	{
 		count++;
-	free_split(div_line);
-	if (!check_lines(fd, count))
-		return (close(fd), 0);
+		free(line);
+	}
 	close(fd);
 	return (count);
 }
