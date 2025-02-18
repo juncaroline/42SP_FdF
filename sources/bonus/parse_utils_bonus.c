@@ -6,20 +6,36 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 11:19:23 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/23 13:17:46 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:05:37 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf_bonus.h"
 
-int	check_lines(int fd)
+int	check_lines(int fd, int size)
 {
+	int		check;
+	int		word_count;
 	char	*line;
+	char	**div_line;
 
-	while ((line = get_next_line(fd)) != NULL)
+	check = 1;
+	word_count = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		div_line = ft_split(line, ' ');
+		while (div_line[word_count] != NULL && div_line[word_count][0] != '\n')
+			word_count++;
+		if (word_count != size)
+			check = 0;
+		word_count = 0;
 		free(line);
-	get_next_line(-1);
-	return (1);
+		free_split(div_line);
+	}
+	return (check);
 }
 
 uint32_t	put_alpha(uint32_t color)

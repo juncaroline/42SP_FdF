@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:26:56 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/23 13:12:23 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:50:30 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,31 @@ uint32_t	put_alpha(uint32_t color)
 	return (new);
 }
 
-int	check_lines(int fd)
+int	check_lines(int fd, int size)
 {
+	int		check;
+	int		word_count;
 	char	*line;
+	char	**div_line;
 
-	while ((line = get_next_line(fd)) != NULL)
+	check = 1;
+	word_count = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		div_line = ft_split(line, ' ');
+		while (div_line[word_count] != NULL && div_line[word_count][0] != '\n')
+			word_count++;
+		if (word_count != size)
+			check = 0;
+		word_count = 0;
 		free(line);
+		free_split(div_line);
+	}
 	get_next_line(-1);
-	return (1);
+	return (check);
 }
 
 static int	process_map_line(t_map *map, char *line, int line_i)

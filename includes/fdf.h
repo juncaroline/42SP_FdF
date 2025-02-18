@@ -6,7 +6,7 @@
 /*   By: cabo-ram <cabo-ram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:42:09 by cabo-ram          #+#    #+#             */
-/*   Updated: 2025/01/23 13:12:56 by cabo-ram         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:48:38 by cabo-ram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int				receive_width(char *id_map);
 int				receive_height(char *id_map);
 int				process_line(t_map *map, char **div_line, int i);
 uint32_t		put_alpha(uint32_t color);
-int				check_lines(int fd);
+int				check_lines(int fd, int size);
 void			convert_map(t_map *map, char *id_map);
 void			center_map(t_map *map);
 
