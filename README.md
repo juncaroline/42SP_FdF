@@ -11,6 +11,7 @@ It reads a file containing coordinates distributed in values ​​representing 
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Examples](#examples)
 
 ## Features
 - Representation of a 3D landscape using the Bresenham algorithm
@@ -70,3 +71,9 @@ To visualize the project:
     - Left arrow : Move the map left
     - Right arrow : Move the map right
     - ESC : Close the runtime window
+
+## Examples
+![42_mandatory](final_render/images/42.png)
+![t2_mandatory](final_render/images/t2.png)
+![42_bonus](final_render/video/42_bonus.gif)
+![starry_night_bonus](final_render/video/starry_night_bonus_small.gif)
