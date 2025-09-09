@@ -47,8 +47,7 @@ To compile the project:
 
 	cd sources
 	make bonus
- 
-Para visualizar o projeto:
+
 To visualize the project:
 
 	./fdf_bonus ../test_maps/42.fdf
