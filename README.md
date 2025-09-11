@@ -47,7 +47,8 @@ To compile the project:
 
 	cd sources
 	make bonus
-
+ 
+Para visualizar o projeto:
 To visualize the project:
 
 	./fdf_bonus ../test_maps/42.fdf
@@ -75,4 +76,5 @@ To visualize the project:
 ![42_mandatory](final_render/images/42.png)
 ![t2_mandatory](final_render/images/t2.png)
 ![42_bonus](final_render/video/42_bonus.gif)
+![abaporu_bonus](final_render/video/abaporu_bonus.gif)
 ![starry_night_bonus](final_render/video/starry_night_bonus_small.gif)
